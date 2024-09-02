@@ -1,0 +1,71 @@
+### Criar uma nova arma
+POST http://localhost:8080/api/weapons
+Content-Type: application/json
+
+{
+  "displayName": "Sword 2",
+  "category": "Melee",
+  "defaultSkinUuid": "123e4567-e89b-12d3-a456-426614174000",
+  "killStreamIcon": "icon.png",
+  "assetPath": "/assets/sword",
+  "weaponStats": {
+    "fireRate": 1.2,
+    "magazineSize": 30,
+    "reloadTime": 2.5
+  },
+  "skins": [
+    {
+      "uuid": "123e4567-e89b-12d3-a456-426614174001",
+      "displayName": "Golden Sword",
+      "themeUuid": "123e4567-e89b-12d3-a456-426614174002",
+      "contentTierUuid": "123e4567-e89b-12d3-a456-426614174003",
+      "displayIcon": "golden_sword.png",
+      "assetPath": "/assets/golden_sword",
+      "chromas": [
+        {
+          "id": 1,
+          "displayName": "Golden Chroma",
+          "displayIcon": "golden_chroma.png",
+          "fullRender": "golden_chroma_full.png",
+          "swatch": "golden_chroma_swatch.png",
+          "streamedVideo": "golden_chroma_video.mp4"
+        }
+      ],
+      "levels": [
+        {
+          "id": 1,
+          "displayName": "Level 1",
+          "levelItem": "golden_sword_level1",
+          "displayIcon": "golden_sword_level1.png",
+          "streamedVideo": "golden_sword_level1_video.mp4"
+        }
+      ]
+    }
+  ]
+}
+
+###
+
+### Atualizar uma arma existente
+PUT http://localhost:8080/api/weapons/1
+Content-Type: application/json
+
+{
+  "name": "Updated Sword",
+  "type": "Melee"
+}
+
+###
+
+### Deletar uma arma
+DELETE http://localhost:8080/api/weapons/1
+
+###
+
+### Buscar uma arma por ID
+GET http://localhost:8080/api/weapons/2
+
+###
+
+### Buscar todas as armas
+GET http://localhost:8080/api/weapons

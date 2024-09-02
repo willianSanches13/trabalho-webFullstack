@@ -1,0 +1,115 @@
+### Criar um novo usuario
+POST http://localhost:8080/api/usuarios
+Content-Type: application/json
+
+{
+  "login": "novoUsuario2",
+  "senha": "novaSenha2",
+  "admin": false
+}
+
+###
+
+POST http://localhost:8080/api/usuarios/auth
+Content-Type: application/json
+
+{
+  "login": "novoUsuario2",
+  "senha": "novaSenha2"
+}
+
+> {% client.global.set("token", response.body.token);
+%}
+
+
+### Criar um novo agente
+POST http://localhost:8080/api/agents
+Content-Type: application/json
+
+{
+  "displayName": "Agente 2",
+  "description": "Descrição do Agente 1",
+  "developerName": "Desenvolvedor 1",
+  "characterTags": ["tag1", "tag2"],
+  "displayIcon": "http://example.com/icon.png",
+  "bustPortrait": "http://example.com/bust.png",
+  "fullPortrait": "http://example.com/full.png",
+  "assetPath": "/path/to/asset",
+  "isFullPortraitRightFacing": true,
+  "isPlayableCharacter": true,
+  "isAvailableForTest": false,
+  "role": {
+    "displayName": "Função 1",
+    "description": "Descrição da Função 1",
+    "displayIcon": "http://example.com/role_icon.png",
+    "assetPath": "/path/to/role_asset"
+  },
+  "abilities": [
+    {
+      "slot": "Habilidade 1",
+      "displayName": "Nome da Habilidade 1",
+      "description": "Descrição da Habilidade 1",
+      "displayIcon": "http://example.com/ability1_icon.png"
+    },
+    {
+      "slot": "Habilidade 2",
+      "displayName": "Nome da Habilidade 2",
+      "description": "Descrição da Habilidade 2",
+      "displayIcon": "http://example.com/ability2_icon.png"
+    }
+  ]
+}
+
+### Atualizar um agente existente
+PUT http://localhost:8080/api/agents/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "displayName": "Agente atualizado",
+  "description": "Descrição do Agente atu",
+  "developerName": "Desenvolvedor 1",
+  "characterTags": [
+    "tag1",
+    "tag2"
+  ],
+  "displayIcon": "http://example.com/icon.png",
+  "bustPortrait": "http://example.com/bust.png",
+  "fullPortrait": "http://example.com/full.png",
+  "assetPath": "/path/to/asset",
+  "role": {
+    "id": 1,
+    "displayName": "Função 1",
+    "description": "Descrição da Função 1",
+    "displayIcon": "http://example.com/role_icon.png",
+    "assetPath": "/path/to/role_asset"
+  },
+  "abilities": [
+    {
+      "slot": "Habilidade 1",
+      "displayName": "Nome da Habilidade 1",
+      "description": "Descrição da Habilidade 1",
+      "displayIcon": "http://example.com/ability1_icon.png"
+    },
+    {
+      "slot": "Habilidade 2",
+      "displayName": "Nome da Habilidade 2",
+      "description": "Descrição da Habilidade 2",
+      "displayIcon": "http://example.com/ability2_icon.png"
+    }
+  ],
+  "fullPortraitRightFacing": false,
+  "playableCharacter": false,
+  "availableForTest": false
+}
+
+### Deletar um agente
+DELETE http://localhost:8080/api/agents/1
+Authorization: Bearer {{token}}
+
+### Buscar um agente por ID
+GET http://localhost:8080/api/agents/1
+#Authorization: Bearer {{token}}
+
+### Buscar todos os agentes
+GET http://localhost:8080/api/agents

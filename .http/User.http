@@ -1,0 +1,21 @@
+### GET request to example server
+POST http://localhost:8080/api/usuarios
+Content-Type: application/json
+
+{
+  "login": "novoUsuario2",
+  "senha": "novaSenha2",
+  "admin": false
+}
+
+###
+
+POST http://localhost:8080/api/usuarios/auth
+Content-Type: application/json
+
+{
+  "login": "novoUsuario2",
+  "senha": "novaSenha2"
+}
+
+> {% client.global.set("token", response.body.token) %}
