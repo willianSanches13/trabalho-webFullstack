@@ -17,8 +17,10 @@ public class ImageUtils {
 
     public static String saveBase64Image(String base64Image, String fileName) {
         log.info("Starting to save Base64 image with fileName: {}", fileName);
+        String[] split = base64Image.split(",");
+        String image = split[1];
 
-        byte[] imageBytes = Base64Utils.decodeFromString(base64Image);
+        byte[] imageBytes = Base64Utils.decodeFromString(image);
         Path path = Paths.get(STATIC_FOLDER + fileName + LocalDateTime.now() + ".png");
         try {
             Files.createDirectories(path.getParent());

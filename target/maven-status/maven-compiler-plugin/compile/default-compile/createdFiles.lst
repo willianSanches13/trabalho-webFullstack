@@ -24,6 +24,7 @@ org/example/rest/dto/WeaponShopDataGridPositionDTO$WeaponShopDataGridPositionDTO
 org/example/mappers/WeaponStatsMapper.class
 org/example/mappers/WeaponsBurstStatsMapper.class
 org/example/mappers/AgentRoleMapper.class
+org/example/services/utils/ImageUtils.class
 org/example/mappers/WeaponDamageRangeMapper.class
 org/example/domain/entity/WeaponShopData$WeaponShopDataBuilder.class
 org/example/domain/entity/Weapon$WeaponBuilder.class

@@ -45,6 +45,7 @@
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/mappers/WeaponsBurstStatsMapper.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/domain/entity/WeaponShopDataGridPosition.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/domain/entity/Usuario.java
+/Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/services/utils/ImageUtils.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/services/GenericService.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/domain/entity/WeaponsBurstStats.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/services/WeaponService.java
