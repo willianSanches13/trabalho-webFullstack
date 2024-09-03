@@ -67,7 +67,6 @@ public class AgentMapper {
         agent.setDisplayIcon( agentDTO.getDisplayIcon() );
         agent.setBustPortrait( agentDTO.getBustPortrait() );
         agent.setFullPortrait( agentDTO.getFullPortrait() );
-        agent.setAssetPath( agentDTO.getAssetPath() );
         agent.setFullPortraitRightFacing( agentDTO.isFullPortraitRightFacing() );
         agent.setPlayableCharacter( agentDTO.isPlayableCharacter() );
         agent.setAvailableForTest( agentDTO.isAvailableForTest() );

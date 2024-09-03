@@ -7,6 +7,7 @@ import org.example.domain.respository.WeaponRepository;
 import org.example.mappers.WeaponMapper;
 import org.example.rest.dto.WeaponDTO;
 import org.example.services.WeaponService;
+import org.example.services.utils.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -29,6 +30,8 @@ public class WeaponServiceImpl implements WeaponService {
     @CacheEvict(value = "weapons", allEntries = true)
     public WeaponDTO save(WeaponDTO weapon) {
         Weapon weaponOrm = weaponMapper.toWeapon(weapon);
+        String path = ImageUtils.saveBase64Image(weapon.getFile(), weapon.getDisplayName());
+        weaponOrm.setAssetPath(path);
         weaponRepository.save(weaponOrm);
         return weaponMapper.toWeaponDTO(weaponOrm);
     }

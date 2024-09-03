@@ -17,6 +17,7 @@ public class WeaponDTO {
     private String category;
     private String defaultSkinUuid;
     private String killStreamIcon;
+    private String file;
     private String assetPath;
     private WeaponStatsDTO weaponStats;
     private List<WeaponSkinDTO> skins;
@@ -83,5 +84,13 @@ public class WeaponDTO {
 
     public void setSkins(List<WeaponSkinDTO> skins) {
         this.skins = skins;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
     }
 }

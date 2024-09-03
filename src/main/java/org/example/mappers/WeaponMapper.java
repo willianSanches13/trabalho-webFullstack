@@ -54,7 +54,6 @@ public class WeaponMapper {
         weapon.setCategory( weaponDTO.getCategory() );
         weapon.setDefaultSkinUuid( weaponDTO.getDefaultSkinUuid() );
         weapon.setKillStreamIcon( weaponDTO.getKillStreamIcon() );
-        weapon.setAssetPath( weaponDTO.getAssetPath() );
         weapon.setWeaponStats( weaponStatsMapper.toWeaponStats( weaponDTO.getWeaponStats() ) );
         weapon.setSkins( weaponSkinDTOListToWeaponSkinList( weaponDTO.getSkins() ) );
 

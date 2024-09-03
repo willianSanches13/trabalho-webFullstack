@@ -21,6 +21,7 @@ public class AgentDTO {
     private String displayIcon;
     private String bustPortrait;
     private String fullPortrait;
+    private String file;
     private String assetPath;
     private boolean isFullPortraitRightFacing;
     private boolean isPlayableCharacter;
@@ -138,5 +139,13 @@ public class AgentDTO {
 
     public void setAbilities(List<AgentAbilityDTO> abilities) {
         this.abilities = abilities;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
     }
 }

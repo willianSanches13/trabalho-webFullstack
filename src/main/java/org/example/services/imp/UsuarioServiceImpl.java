@@ -27,10 +27,11 @@ public class UsuarioServiceImpl implements UserDetailsService {
         return usuarioRepositry.save(usuario);
     }
 
-    public void authenticar(Usuario usuario){
+    public UserDetails authenticar(Usuario usuario){
        UserDetails user = loadUserByUsername(usuario.getLogin());
        boolean senhasBatem = encoder.matches(usuario.getSenha(), user.getPassword());
        if(senhasBatem){
+           return user;
        }else{
            throw new SenhaInvalidaException();
 

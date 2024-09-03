@@ -9,11 +9,18 @@ import org.example.domain.respository.AgentRepository;
 import org.example.mappers.AgentMapper;
 import org.example.rest.dto.AgentDTO;
 import org.example.services.AgentService;
+import org.example.services.utils.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Base64Utils;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +39,8 @@ public class AgentServiceImpl implements AgentService {
     @CacheEvict(value = "agents", allEntries = true)
     public AgentDTO save(AgentDTO agent) {
         Agent agentOrm = agentMapper.toAgent(agent);
+        String path = ImageUtils.saveBase64Image(agent.getFile(), agent.getDisplayName());
+        agentOrm.setAssetPath(path);
         agentRepository.save(agentOrm);
         return agentMapper.toAgentDTO(agentOrm);
     }
@@ -39,7 +48,7 @@ public class AgentServiceImpl implements AgentService {
     @Override
     @CacheEvict(value = "agents", allEntries = true)
     public AgentDTO update(AgentDTO agent) throws NotFoundException {
-        if (agent != null) {
+        if (agent.getId() != null) {
             Agent existingAgent = agentRepository.findById(agent.getId())
                     .orElseThrow(() -> new NotFoundException("Agent not found"));
             agentMapper.updateAgentFromDTO(agent, existingAgent);
@@ -75,4 +84,5 @@ public class AgentServiceImpl implements AgentService {
                 .map(agentMapper::toAgentDTO)
                 .collect(Collectors.toList());
     }
+
 }
