@@ -1,5 +1,5 @@
 ### Criar um novo usuario
-POST http://localhost:8080/api/usuarios
+POST http://localhost:8081/api/usuarios
 Content-Type: application/json
 
 {
@@ -8,9 +8,9 @@ Content-Type: application/json
   "admin": false
 }
 
-###
+### Autenticar um usuario
 
-POST http://localhost:8080/api/usuarios/auth
+POST http://localhost:8081/api/usuarios/auth
 Content-Type: application/json
 
 {
@@ -19,12 +19,14 @@ Content-Type: application/json
 }
 
 > {% client.global.set("token", response.body.token);
+    console.log(response.body.token);
 %}
 
 
 ### Criar um novo agente
-POST http://localhost:8080/api/agents
+POST http://localhost:8081/api/agents
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJub3ZvVXN1YXJpbzIiLCJleHAiOjE3MjUzNjY1MDl9.X5j5vVYbvehkrsGHz45lFD1bo1OH6HTHFPKbcVTDwDh4Zte2icX_HlM_yW5MYwtfCsNV52I19FO0mMXJGOFEnw
 
 {
   "displayName": "Agente 2",
@@ -61,7 +63,7 @@ Content-Type: application/json
 }
 
 ### Atualizar um agente existente
-PUT http://localhost:8080/api/agents/1
+PUT http://localhost:8081/api/agents/1
 Content-Type: application/json
 
 {
@@ -104,12 +106,12 @@ Content-Type: application/json
 }
 
 ### Deletar um agente
-DELETE http://localhost:8080/api/agents/1
+DELETE http://localhost:8081/api/agents/1
 Authorization: Bearer {{token}}
 
 ### Buscar um agente por ID
-GET http://localhost:8080/api/agents/1
+GET http://localhost:8081/api/agents/1
 #Authorization: Bearer {{token}}
 
 ### Buscar todos os agentes
-GET http://localhost:8080/api/agents
+GET http://localhost:8081/api/agents

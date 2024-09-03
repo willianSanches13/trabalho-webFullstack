@@ -1,6 +1,7 @@
 ### Criar uma nova arma
-POST http://localhost:8080/api/weapons
+POST http://localhost:8081/api/weapons
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJub3ZvVXN1YXJpbzIiLCJleHAiOjE3MjUzMjE2Mzd9.hmRpyXyCbMMskwMv8RKZ9kbptId6vgq_54F-oIqgxJ0q05yXFp7X6zzPXUIuashMRa5tdc1sC-0vMLYeOY4QKg
 
 {
   "displayName": "Sword 2",
@@ -47,7 +48,7 @@ Content-Type: application/json
 ###
 
 ### Atualizar uma arma existente
-PUT http://localhost:8080/api/weapons/1
+PUT http://localhost:8081/api/weapons/1
 Content-Type: application/json
 
 {
@@ -58,14 +59,14 @@ Content-Type: application/json
 ###
 
 ### Deletar uma arma
-DELETE http://localhost:8080/api/weapons/1
+DELETE http://localhost:8081/api/weapons/1
 
 ###
 
 ### Buscar uma arma por ID
-GET http://localhost:8080/api/weapons/2
+GET http://localhost:8081/api/weapons/2
 
 ###
 
 ### Buscar todas as armas
-GET http://localhost:8080/api/weapons
+GET http://localhost:8081/api/weapons
