@@ -8,6 +8,8 @@ import org.example.mappers.WeaponMapper;
 import org.example.rest.dto.WeaponDTO;
 import org.example.services.WeaponService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +26,7 @@ public class WeaponServiceImpl implements WeaponService {
     private WeaponMapper weaponMapper;
 
     @Override
+    @CacheEvict(value = "weapons", allEntries = true)
     public WeaponDTO save(WeaponDTO weapon) {
         Weapon weaponOrm = weaponMapper.toWeapon(weapon);
         weaponRepository.save(weaponOrm);
@@ -31,6 +34,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
+    @CacheEvict(value = "weapons", allEntries = true)
     public WeaponDTO update(WeaponDTO weapon) throws NotFoundException {
         if (weapon != null) {
             Weapon existingWeapon = weaponRepository.findById(weapon.getId())
@@ -45,6 +49,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
+    @CacheEvict(value = "weapons", allEntries = true)
     public void delete(Long id) throws NotFoundException {
         Weapon existingWeapon = weaponRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Weapon not found"));
@@ -52,6 +57,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
+    @Cacheable(value = "weapons", key = "#id")
     public WeaponDTO findById(Long id) throws NotFoundException {
         Weapon existingWeapon = weaponRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Weapon not found"));
@@ -59,6 +65,7 @@ public class WeaponServiceImpl implements WeaponService {
     }
 
     @Override
+    @Cacheable(value = "weapons")
     public List<WeaponDTO> findAll() {
         List<Weapon> weapons = weaponRepository.findAll();
         return weapons.stream()

@@ -10,6 +10,8 @@ import org.example.mappers.AgentMapper;
 import org.example.rest.dto.AgentDTO;
 import org.example.services.AgentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +29,7 @@ public class AgentServiceImpl implements AgentService {
 
 
     @Override
+    @CacheEvict(value = "agents", allEntries = true)
     public AgentDTO save(AgentDTO agent) {
         Agent agentOrm = agentMapper.toAgent(agent);
         agentRepository.save(agentOrm);
@@ -34,6 +37,7 @@ public class AgentServiceImpl implements AgentService {
     }
 
     @Override
+    @CacheEvict(value = "agents", allEntries = true)
     public AgentDTO update(AgentDTO agent) throws NotFoundException {
         if (agent != null) {
             Agent existingAgent = agentRepository.findById(agent.getId())
@@ -48,6 +52,7 @@ public class AgentServiceImpl implements AgentService {
     }
 
     @Override
+    @CacheEvict(value = "agents", allEntries = true)
     public void delete(Long id) throws NotFoundException {
         Agent existingAgent = agentRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Agent not found"));
@@ -55,6 +60,7 @@ public class AgentServiceImpl implements AgentService {
     }
 
     @Override
+    @Cacheable(value = "agents", key = "#id")
     public AgentDTO findById(Long id) throws NotFoundException {
         Agent existingAgent = agentRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Agent not found"));
@@ -62,6 +68,7 @@ public class AgentServiceImpl implements AgentService {
     }
 
     @Override
+    @CacheEvict(value = "agents", allEntries = true)
     public List<AgentDTO> findAll() {
         List<Agent> agents = agentRepository.findAll();
         return agents.stream()

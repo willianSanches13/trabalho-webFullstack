@@ -1,3 +1,4 @@
+/Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/config/CorsConfig.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/domain/entity/WeaponSkin.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/domain/entity/Weapon.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/mappers/WeaponAdsStatsMapper.java
@@ -24,6 +25,7 @@
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/domain/respository/WeaponRepository.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/services/imp/WeaponServiceImpl.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/services/imp/AgentServiceImpl.java
+/Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/config/CachingConfig.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/rest/dto/WeaponsShotgunStatsDTO.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/rest/dto/AgentDTO.java
 /Users/willian.sanches/Dev/rascunho/trabalho-webFullstack/src/main/java/org/example/mappers/WeaponShopDataMapper.java
