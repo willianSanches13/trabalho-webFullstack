@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -28,7 +29,7 @@ public class WeaponController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public WeaponDTO save(@RequestBody WeaponDTO weapon) {
+    public WeaponDTO save(@Valid @RequestBody WeaponDTO weapon) {
         return weaponService.save(weapon);
     }
 

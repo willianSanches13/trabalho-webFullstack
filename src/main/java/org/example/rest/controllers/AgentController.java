@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -30,7 +31,7 @@ public class AgentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AgentDTO save(@RequestBody AgentDTO agent) {
+    public AgentDTO save(@Valid @RequestBody AgentDTO agent) {
         return agentService.save(agent);
     }
 

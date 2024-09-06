@@ -1,12 +1,12 @@
 package org.example.rest.dto;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Builder
@@ -14,7 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 public class AgentDTO {
     private Long id;
+    @NotBlank
     private String displayName;
+    @Size(max = 255, message = "Description cannot exceed 255 characters")
     private String description;
     private String developerName;
     private List<String> characterTags;

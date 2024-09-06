@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Builder
@@ -13,7 +15,9 @@ import java.util.List;
 @AllArgsConstructor
 public class WeaponDTO {
     private Long id;
+    @NotBlank
     private String displayName;
+    @Size(max = 100, message = "Description cannot exceed 100 characters")
     private String category;
     private String defaultSkinUuid;
     private String killStreamIcon;
