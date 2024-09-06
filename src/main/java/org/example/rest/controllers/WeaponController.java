@@ -30,6 +30,7 @@ public class WeaponController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public WeaponDTO save(@Valid @RequestBody WeaponDTO weapon) {
+        weapon.setCategory(HtmlSanitizerUtil.sanitizeHtml(weapon.getCategory()));
         return weaponService.save(weapon);
     }
 

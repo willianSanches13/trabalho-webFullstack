@@ -58,7 +58,6 @@ public class AgentMapper {
         Agent agent = new Agent();
 
         agent.setDisplayName( agentDTO.getDisplayName() );
-        agent.setDescription( agentDTO.getDescription() );
         agent.setDeveloperName( agentDTO.getDeveloperName() );
         List<String> list = agentDTO.getCharacterTags();
         if ( list != null ) {

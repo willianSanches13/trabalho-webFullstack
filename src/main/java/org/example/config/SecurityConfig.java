@@ -73,4 +73,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .headers()
+                .xssProtection()
+                .and()
+                .contentSecurityPolicy("script-src 'self'");
+    }
 }

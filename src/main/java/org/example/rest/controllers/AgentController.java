@@ -32,6 +32,7 @@ public class AgentController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AgentDTO save(@Valid @RequestBody AgentDTO agent) {
+        agent.setDescription(HtmlSanitizerUtil.sanitizeHtml(agent.getDescription()));
         return agentService.save(agent);
     }
 
