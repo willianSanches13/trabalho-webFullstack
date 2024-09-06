@@ -1,5 +1,6 @@
 package org.example.rest.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.example.rest.dto.WeaponDTO;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/weapons")
 @RequiredArgsConstructor
@@ -28,8 +31,11 @@ public class WeaponController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public WeaponDTO save(@RequestBody WeaponDTO weapon) {
-        return weaponService.save(weapon);
+    public WeaponDTO save(@Valid @RequestBody WeaponDTO weapon) {
+        weapon.setCategory(HtmlSanitizerUtil.sanitizeHtml(weapon.getCategory()));
+        var newWeapon = weaponService.save(weapon);
+        log.info("Weapon Salvo com sucesso: {}", newWeapon);
+        return newWeapon;
     }
 
     @PutMapping("/{id}")

@@ -1,6 +1,6 @@
 package org.example.rest.controllers;
 
-
+import lombok.extern.slf4j.Slf4j;
 import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.example.rest.dto.AgentDTO;
@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/agents")
 @RequiredArgsConstructor
@@ -30,8 +32,11 @@ public class AgentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AgentDTO save(@RequestBody AgentDTO agent) {
-        return agentService.save(agent);
+    public AgentDTO save(@Valid @RequestBody AgentDTO agent) {
+        agent.setDescription(HtmlSanitizerUtil.sanitizeHtml(agent.getDescription()));
+        var newAgent = agentService.save(agent);
+        log.info("Agente Salvo com sucesso: {}", newAgent);
+        return newAgent;
     }
 
     @PutMapping("/{id}")
