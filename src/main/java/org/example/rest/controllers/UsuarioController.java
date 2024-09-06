@@ -36,7 +36,7 @@ public class UsuarioController {
         return  usuarioService.salvar(usuario);
     }
 
-    @PostMapping("/login")
+    @PostMapping("/auth")
     public TokenDTO autenticator(@RequestBody CredenciaisDTO credenciais){
         try{
             Usuario usuario =  new Usuario();
